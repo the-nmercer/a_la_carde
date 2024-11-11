@@ -8,6 +8,25 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Category.create(name: "Electronics", description: "Electronic items like phones, laptops, etc.")
-Category.create(name: "Furniture", description: "Home and office furniture")
-Category.create(name: "Clothing", description: "Apparel and accessories")
+Product.delete_all
+Category.delete_all
+
+categories = [
+  Category.create(name: "Tabletop Games", description: "Board games, strategy games, and other tabletop games."),
+  Category.create(name: "Miniatures", description: "Miniature figurines for tabletop games like Warhammer and D&D."),
+  Category.create(name: "Dice", description: "Various dice sets for tabletop RPGs and board games."),
+  Category.create(name: "Game Accessories", description: "Accessories like game mats, card sleeves, and storage solutions."),
+  Category.create(name: "Card Games", description: "Trading card games and related accessories."),
+  Category.create(name: "Role-Playing Games", description: "Books, rule sets, and materials for role-playing games like D&D.")
+]
+
+100.times do
+  product = Product.create(
+    name: Faker::Commerce.product_name.capitalize,
+    description: Faker::Lorem.sentence,
+    price: Faker::Commerce.price,
+    stock_quantity: Faker::Number.between(from: 1, to: 100),
+    category: categories.sample
+  )
+end
+
