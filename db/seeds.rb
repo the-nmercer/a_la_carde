@@ -7,4 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+Category.create(name: "Electronics", description: "Electronic items like phones, laptops, etc.")
+Category.create(name: "Furniture", description: "Home and office furniture")
+Category.create(name: "Clothing", description: "Apparel and accessories")

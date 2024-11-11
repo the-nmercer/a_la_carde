@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  permit_params :name, :description, :category, :price, :stock_quantity
+  permit_params :name, :description, :category_id, :price, :stock_quantity
 
   index do
     selectable_column
@@ -16,7 +16,7 @@ ActiveAdmin.register Product do
     f.inputs 'Product Details' do
       f.input :name
       f.input :description
-      f.input :category
+      f.input :category, as: :select, collection: Category.all.collect { |c| [c.name, c.id] }
       f.input :price
       f.input :stock_quantity
     end
