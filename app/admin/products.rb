@@ -47,7 +47,7 @@ ActiveAdmin.register Product do
       row :category
       row :image do |product|
         if product.image.attached?
-          image_tag product.image.variant(resize_to_limit: [300, 300]).processed, alt: "Product Image"
+          image_tag product.image.variant(resize_to_limit: [300, 300]).processed
         else
           "No image"
         end

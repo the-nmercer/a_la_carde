@@ -2,7 +2,6 @@ class Product < ApplicationRecord
   belongs_to :category
   has_one_attached :image
 
-  # Resize image after upload
   after_commit :resize_image, on: [:create, :update]
 
   private
@@ -10,7 +9,6 @@ class Product < ApplicationRecord
   def resize_image
     return unless image.attached?
 
-    # Create and save the resized image as a variant
     image.variant(resize_to_limit: [100, 100]).processed
   end
 

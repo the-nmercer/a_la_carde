@@ -4,7 +4,8 @@ source "https://rubygems.org"
 gem "image_processing", "~> 1.2"
 gem "mini_magick"
 # Active admin
-gem "activeadmin"
+gem 'activeadmin', '~> 3.2.5'
+gem 'formtastic', '~> 5.0.0'
 gem 'devise'
 gem 'sassc-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
