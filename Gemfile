@@ -1,6 +1,9 @@
 source "https://rubygems.org"
 
-#Active admin
+# Image processing
+gem "image_processing", "~> 1.2"
+gem "mini_magick"
+# Active admin
 gem "activeadmin"
 gem 'devise'
 gem 'sassc-rails'
