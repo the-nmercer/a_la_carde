@@ -1,0 +1,16 @@
+<h1><%= @product.name %></h1>
+
+<div class="product-details">
+  <p><%= @product.description %></p>
+  <p><strong>Price:</strong> $<%= @product.price %></p>
+
+  <% if @product.image.attached? %>
+    <div class="product-image">
+      <%= image_tag @product.image %>
+    </div>
+  <% else %>
+    <p>No image available</p>
+  <% end %>
+
+  <%= link_to 'Back to Products', products_path, class: 'back-link' %>
+</div>
