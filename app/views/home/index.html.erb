@@ -1,0 +1,21 @@
+<h1>Welcome to A La Carde!</h1>
+<div id="products">
+  <% if @products.present? %>
+    <% @products.each do |product| %>
+      <div class="product">
+        <h2><%= link_to product.name, product_path(product) %></h2>
+        <p><%= product.description %></p>
+        <p>Price: $<%= product.price %></p>
+
+        <!-- Check if the product has an image attached -->
+        <% if product.image.attached? %>
+          <%= image_tag product.image, class: 'product-image' %>
+        <% else %>
+          <p>No image available</p>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No products are available at the moment. Please check back later!</p>
+  <% end %>
+</div>

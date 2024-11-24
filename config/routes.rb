@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   resources :pages, only: [:show], param: :title
 
-  root 'products#index'
+  root "home#index"
   resources :products, only: [:index, :show]
 end
