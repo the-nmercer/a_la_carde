@@ -22,8 +22,9 @@
   <% end %>
 
   <div class="pagination">
-    <%= paginate @products, param_name: :page, params: { keyword: params[:keyword], category_id: params[:category_id] } %>
+    <%= paginate @products, param_name: :page, params: { keyword: params[:keyword], category_id: params[:category_id].presence, filter: params[:filter] } %>
   </div>
+
 
 </div>
 
