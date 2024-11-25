@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+# Pagination
+gem 'kaminari'
 # Image processing
 gem "image_processing", "~> 1.2"
 gem "mini_magick"
