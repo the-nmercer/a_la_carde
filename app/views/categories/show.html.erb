@@ -1,5 +1,7 @@
 <h1><%= @category.name %></h1>
 
+<%= link_to 'Back to Categories', categories_path, class: 'back-to-categories-button' %>
+
 <div id="products">
   <% if @products.present? %>
     <% @products.each do |product| %>
@@ -9,6 +11,11 @@
         <p>Price: $<%= product.price %></p>
       </div>
     <% end %>
+
+    <div class="pagination">
+      <%= paginate @products, param_name: :page, params: { keyword: params[:keyword], category_id: params[:id] } %>
+    </div>
+
   <% else %>
     <p>No products available in this category.</p>
   <% end %>

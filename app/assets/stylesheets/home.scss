@@ -139,7 +139,6 @@ footer {
 
 nav {
   background-color: #333;
-  color: white;
   padding: 10px 0;
 }
 
@@ -151,8 +150,8 @@ nav {
   align-items: center;
 }
 
-.navbar-logo {
-  font-size: 24px;
+.navbar-container .navbar-logo {
+  font-size: 32px;
   font-weight: bold;
   color: white;
   text-decoration: none;
@@ -168,14 +167,14 @@ nav {
   display: inline;
 }
 
-.navbar-links a {
+.navbar-links li a {
   color: white;
   text-decoration: none;
   font-size: 16px;
 }
 
 .navbar-links a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 #category-list {
@@ -271,4 +270,76 @@ nav {
 
 .filter-link:hover {
   text-decoration: underline;
+}
+
+#products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.back-to-categories-button {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  text-decoration: none;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.back-to-categories-button:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #fff;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.search-select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.search-button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
 }

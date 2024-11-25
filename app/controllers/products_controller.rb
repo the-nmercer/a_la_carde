@@ -8,6 +8,17 @@ class ProductsController < ApplicationController
       @products = @products.where('updated_at >= ?', 3.days.ago)
       @products = @products.where('created_at < ?', 3.days.ago)
     end
+
+    if params[:keyword].present?
+      keyword = params[:keyword].downcase
+      @products = @products.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", "%#{keyword}%", "%#{keyword}%")
+    end
+
+    if params[:category_id].present?
+      @products = @products.where(category_id: params[:category_id])
+    end
+
+    @products = @products.page(params[:page]).per(10)
   end
 
   def show

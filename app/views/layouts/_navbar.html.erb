@@ -8,5 +8,13 @@
       <li><%= link_to "About", page_path("about") %></li>
       <li><%= link_to "Contact", page_path("contact") %></li>
     </ul>
+
+    <div class="navbar-search">
+      <%= form_with url: products_path, method: :get, local: true, class: "search-form" do |form| %>
+        <%= form.text_field :keyword, placeholder: "Search products...", value: params[:keyword], class: "search-input" %>
+        <%= form.select :category_id, options_for_select([["All Categories", nil]] + Category.all.pluck(:name, :id), params[:category_id]), class: "search-select" %>
+        <%= form.submit "Search", class: "search-button" %>
+      <% end %>
+    </div>
   </div>
 </nav>
