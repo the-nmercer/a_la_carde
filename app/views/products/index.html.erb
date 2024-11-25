@@ -1,5 +1,11 @@
 <h1>Available Products</h1>
 
+<div id="filters">
+  <%= link_to 'New Products', products_path(filter: 'new'), class: 'filter-link' %> |
+  <%= link_to 'Recently Updated Products', products_path(filter: 'recently_updated'), class: 'filter-link' %> |
+  <%= link_to 'All Products', products_path, class: 'filter-link' %>
+</div>
+
 <div id="products">
   <% @products.each do |product| %>
     <div class="product">

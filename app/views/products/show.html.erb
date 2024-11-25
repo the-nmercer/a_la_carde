@@ -4,6 +4,9 @@
   <p><%= @product.description %></p>
   <p><strong>Price:</strong> $<%= @product.price %></p>
 
+  <!-- Display stock quantity -->
+  <p><strong>Stock:</strong> <%= @product.stock_quantity %> available</p>
+
   <% if @product.image.attached? %>
     <div class="product-image">
       <%= image_tag @product.image %>
