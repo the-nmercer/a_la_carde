@@ -18,14 +18,19 @@
       <% else %>
         <p>No image available</p>
       <% end %>
+
+      <!-- Add to Cart Form -->
+      <div class="add-to-cart">
+        <%= form_with url: add_to_cart_cart_index_path, method: :post do %>
+          <%= hidden_field_tag :product_id, product.id %>
+          <%= number_field_tag :quantity, 1, min: 1 %>
+          <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 
   <div class="pagination">
     <%= paginate @products, param_name: :page, params: { keyword: params[:keyword], category_id: params[:category_id].presence, filter: params[:filter] } %>
   </div>
-
-
 </div>
-
-

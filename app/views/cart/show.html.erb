@@ -1,0 +1,31 @@
+<h1>Your Shopping Cart</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |item| %>
+      <tr>
+        <td><%= item[:product].name %></td>
+        <td><%= item[:quantity] %></td>
+        <td><%= number_to_currency(item[:product].price) %></td>
+        <td><%= number_to_currency(item[:total_price]) %></td>
+        <td>
+          <%= link_to 'Remove', remove_from_cart_cart_index_path(product_id: item[:product].id), method: :delete %>
+          <%= form_with url: update_quantity_cart_index_path, method: :patch do |form| %>
+            <%= hidden_field_tag :product_id, item[:product].id %>
+            <%= number_field_tag :quantity, item[:quantity], min: 1 %>
+            <%= submit_tag 'Update' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Continue Shopping', products_path %>

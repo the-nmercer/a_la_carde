@@ -15,5 +15,14 @@
     <p>No image available</p>
   <% end %>
 
+  <div class="add-to-cart">
+    <h2>Add to Cart</h2>
+    <%= form_with url: add_to_cart_cart_index_path, method: :post do %>
+      <%= hidden_field_tag :product_id, @product.id %>
+      <%= number_field_tag :quantity, 1, min: 1, max: @product.stock_quantity %>
+      <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
   <%= link_to 'Back to Products', products_path, class: 'back-link' %>
 </div>

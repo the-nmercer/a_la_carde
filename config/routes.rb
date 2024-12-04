@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show] do
     resources :products, only: [:index]
   end
+
+  resources :cart, only: [:show] do
+    post 'add_to_cart', on: :collection
+    patch 'update_quantity', on: :collection
+    delete 'remove_from_cart', on: :collection
+  end
 end
