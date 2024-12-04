@@ -1,4 +1,11 @@
 class CartController < ApplicationController
+  def index
+    @cart_items = current_cart.map do |product_id, quantity|
+      product = Product.find(product_id)
+      { product: product, quantity: quantity, total_price: product.price * quantity }
+    end
+  end
+
   def show
     @cart_items = current_cart.map do |product_id, quantity|
       product = Product.find(product_id)
@@ -16,7 +23,7 @@ class CartController < ApplicationController
       current_cart[product_id] = quantity
     end
 
-    redirect_to cart_path, notice: 'Product added to cart!'
+    redirect_to cart_index_path, notice: 'Product added to cart!'
   end
 
   def update_quantity
@@ -29,13 +36,17 @@ class CartController < ApplicationController
       current_cart.delete(product_id)
     end
 
-    redirect_to cart_path, notice: 'Cart updated!'
+    redirect_to cart_index_path, notice: 'Cart updated!'
   end
 
   def remove_from_cart
     product_id = params[:product_id].to_i
     current_cart.delete(product_id)
 
-    redirect_to cart_path, notice: 'Product removed from cart!'
+    redirect_to cart_index_path, notice: 'Product removed from cart!'
+  end
+
+  def checkout
+
   end
 end

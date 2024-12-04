@@ -18,10 +18,10 @@
         <td><%= number_to_currency(item[:total_price]) %></td>
         <td>
           <%= link_to 'Remove', remove_from_cart_cart_index_path(product_id: item[:product].id), method: :delete %>
-          <%= form_with url: update_quantity_cart_index_path, method: :patch do |form| %>
-            <%= hidden_field_tag :product_id, item[:product].id %>
-            <%= number_field_tag :quantity, item[:quantity], min: 1 %>
-            <%= submit_tag 'Update' %>
+          <%= form_with url: add_to_cart_cart_index_path, method: :post do |form| %>
+            <%= hidden_field_tag :product_id, @product.id %>  <!-- ID of the product -->
+            <%= number_field_tag :quantity, 1, min: 1 %>  <!-- Quantity -->
+            <%= submit_tag "Add to Cart" %>
           <% end %>
         </td>
       </tr>
