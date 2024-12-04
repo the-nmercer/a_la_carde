@@ -12,12 +12,9 @@ Rails.application.routes.draw do
     resources :products, only: [:index]
   end
 
-  resources :cart, only: [:index, :create, :update, :destroy] do
-    collection do
-      post 'add_to_cart'
-      post 'update_quantity'
-      delete 'remove_from_cart', to: 'cart#remove_from_cart'
-      get 'checkout'
-    end
+  resource :cart, only: [:show] do
+    post :add_item
+    patch :update_item
+    delete :remove_item
   end
 end

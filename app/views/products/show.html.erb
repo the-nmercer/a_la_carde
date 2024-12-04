@@ -4,7 +4,6 @@
   <p><%= @product.description %></p>
   <p><strong>Price:</strong> $<%= @product.price %></p>
 
-  <!-- Display stock quantity -->
   <p><strong>Stock:</strong> <%= @product.stock_quantity %> available</p>
 
   <% if @product.image.attached? %>
@@ -15,10 +14,15 @@
     <p>No image available</p>
   <% end %>
 
-  <%= form_with url: add_to_cart_cart_index_path, method: :post do |form| %> <!-- Use the correct path helper -->
-    <%= hidden_field_tag :product_id, @product.id %>  <!-- ID of the product -->
-    <%= number_field_tag :quantity, 1, min: 1 %>  <!-- Quantity -->
-    <%= submit_tag "Add to Cart" %>
+  <%= form_with url: add_item_cart_path, method: :post, local: true do |form| %>
+    <%= form.hidden_field :product_id, value: @product.id %>
+    <div>
+      <%= form.label :quantity, "Quantity:" %>
+      <%= form.number_field :quantity, value: 1, min: 1, step: 1 %>
+    </div>
+    <div>
+      <%= form.submit "Add to Cart", class: "btn btn-primary" %>
+    </div>
   <% end %>
 
   <%= link_to 'Back to Products', products_path, class: 'back-link' %>
