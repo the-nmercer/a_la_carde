@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_04_194732) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_04_235649) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -88,6 +88,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_04_194732) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "street"
+    t.string "city"
+    t.string "postal_code"
+    t.string "province"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.decimal "total_price"
+    t.decimal "taxes"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_invoices_on_order_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -97,6 +111,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_04_194732) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "pst"
+    t.decimal "gst"
+    t.decimal "hst"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -107,6 +124,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_04_194732) do
     t.decimal "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "taxes"
+    t.decimal "pst"
+    t.decimal "gst"
+    t.decimal "hst"
+    t.string "address"
+    t.string "province"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
@@ -128,8 +151,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_04_194732) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.decimal "pst_rate"
+    t.decimal "gst_rate"
+    t.decimal "hst_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "invoices", "orders"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "customers"

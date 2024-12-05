@@ -16,5 +16,8 @@ Rails.application.routes.draw do
     post :add_item
     patch :update_item
     delete :remove_item
+    get :checkout
   end
+
+  resources :orders, only: [:new, :create]
 end

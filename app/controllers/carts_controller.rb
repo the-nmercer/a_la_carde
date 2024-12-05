@@ -46,6 +46,10 @@ class CartsController < ApplicationController
     redirect_to cart_path, notice: 'Item removed from cart.'
   end
 
+  def checkout
+    redirect_to new_order_path
+  end
+
   private
 
   def initialize_cart
