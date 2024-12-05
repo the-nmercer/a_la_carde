@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "orders/new"
+  get "orders/create"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -11,4 +13,13 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show] do
     resources :products, only: [:index]
   end
+
+  resource :cart, only: [:show] do
+    post :add_item
+    patch :update_item
+    delete :remove_item
+    get :checkout
+  end
+
+  resources :orders, only: [:new, :create]
 end

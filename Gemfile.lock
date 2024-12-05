@@ -240,6 +240,8 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-ujs (0.1.0)
+      railties (>= 3.1)
     railties (7.2.1)
       actionpack (= 7.2.1)
       activesupport (= 7.2.1)
@@ -371,6 +373,7 @@ DEPENDENCIES
   mini_magick
   puma (>= 5.0)
   rails (~> 7.2.1)
+  rails-ujs
   rubocop-rails-omakase
   sassc-rails
   selenium-webdriver
