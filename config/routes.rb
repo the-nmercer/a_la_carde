@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :customers
   get "orders/new"
   get "orders/create"
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -22,4 +23,8 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:new, :create]
+
+  devise_for :customers, controllers: {
+  registrations: 'customers/registrations'
+}
 end
