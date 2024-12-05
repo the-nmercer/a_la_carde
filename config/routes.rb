@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "orders/new"
+  get "orders/create"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
